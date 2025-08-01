@@ -1,0 +1,48 @@
+<div class="min-h-screen flex items-center justify-center bg-blue-50 p-6">
+  <div class="w-full max-w-5xl space-y-6">
+   
+<div class="flex flex-wrap gap-4">
+  <div *ngFor="let file of index.Images; let i = index" class="relative">
+    <span class="btn_remove_img absolute -top-3 -right-3 text-red-500 cursor-pointer" (click)="removeImages(i)">
+      <!-- Icône "X Circle" de Heroicons -->
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    </span>
+    <img class="h-auto max-w-full rounded-lg" [src]="file.url" alt="Images" style="width: 150px; height: 150px; object-fit: cover;">
+  </div>
+</div>
+
+    <!-- Zone d'upload -->
+    <div class="flex justify-center">
+      <div class="w-full">
+        <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-64 border-2 border-blue-300 border-dashed rounded-xl cursor-pointer bg-white hover:bg-blue-50 transition-colors duration-200">
+          <div class="flex flex-col items-center justify-center pt-5 pb-6 px-4 text-center">
+            <svg class="w-12 h-12 mb-4 text-blue-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+            </svg>
+            <h3 class="mb-1 text-xl font-semibold text-blue-700">Upload d'images</h3>
+            <p class="mb-2 text-sm text-blue-600">Cliquez pour sélectionner ou glissez-déposez vos images</p>
+            <p class="text-xs text-blue-500">Formats supportés: JPEG, PNG, GIF, WEBP (Max 5MB par image)</p>
+          </div>
+          <input 
+            id="dropzone-file" 
+            type="file" 
+            class="hidden" 
+            multiple 
+            accept="image/*" 
+            (change)="onImageSelected($event)"
+            formControlName="img"
+          />
+        </label>
+      </div>
+    </div>
+
+    <!-- Bouton de soumit -->
+    <div class="flex justify-center pt-4">
+      <button class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg shadow-md transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+        Envoyer les images
+      </button>
+    </div>
+  </div>
+</div>
